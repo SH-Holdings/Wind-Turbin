@@ -1,5 +1,0 @@
-npm : lets you run JavaScript on your server or your computer.
-    brew install npm
-
-node.js : package manager, used to install libraries, such as React.
-    brew install node
