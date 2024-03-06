@@ -1,24 +1,24 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Hero from "./Hero";
-import AboutUs from "./AboutUs";
-import RenewableEnergyIntro from "./RenewableEnergyIntro";
-import SimpleLoadModel from "./SimpleLoadModel";
-import CTAButton from "./CTAButton";
-import ContactUs from "./ContactUs";
-import Footer from "./Footer";
+import Navbar from "./components/NavBars/Navbar";
+import Hero from "./components/Hero/Hero";
+// import AboutUs from "./Us/AboutUs";
+// import RenewableEnergyIntro from "./Introductions/RenewableEnergyIntro";
+// import SimpleLoadModel from "./Analysis/SimpleLoadModel";
+// import CTAButton from "./Analysis/CTAButton";
+// import ContactUs from "./Us/ContactUs";
+// import Footer from "./Footers/Footer";
 
 function App() {
   return (
     <div>
       <Navbar />
       <Hero />
-      <AboutUs />
+      {/* <AboutUs />
       <RenewableEnergyIntro />
       <SimpleLoadModel />
       <CTAButton />
       <ContactUs />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

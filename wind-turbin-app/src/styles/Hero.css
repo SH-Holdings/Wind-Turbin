@@ -1,0 +1,101 @@
+.hero-section {
+  background-image: url("/images/mywindturbinehero.png");
+  background-size: cover;
+  background-position: -165% 50%; /* Adjusts the background image position */
+  height: 985px;
+  display: flex;
+  justify-content: center; /* Initially place the content in the middle */
+  align-items: center;
+  color: white;
+  position: relative; /* Needed for absolute positioning of the text container */
+}
+
+/* Inner container for text to manage its positioning */
+.hero-section .text-container {
+  position: absolute;
+  left: 50%; /* Moves text closer to the left edge, adjust as needed */
+  top: 50%;
+  transform: translate(0, -110%); /* Vertically centers the text container */
+  width: 30%; /* Limits the text container to the left half */
+  text-align: left; /* Ensures text aligns to the left */
+}
+
+.hero-section h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  text-align: left;
+  color: #5392b0; /* Adjust for visibility */
+  margin: 0; /* Removes default margin */
+}
+
+.hero-section h1 span:first-child {
+  font-size: 64px;
+  line-height: 64px;
+}
+
+.hero-section h1 .wind-turbine-title {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #333333;
+  display: block; /* Ensures 'TURBINE' starts on a new line */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 50vh;
+    padding-left: 20px; /* Adjust left padding for smaller screens */
+  }
+
+  .hero-section .text-container {
+    left: 10%; /* Adjust for smaller screens */
+    width: 80%; /* Allows more space for text on smaller screens */
+  }
+
+  .hero-section h1,
+  .hero-section h1 span:first-child,
+  .hero-section h1 .wind-turbine-title {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    height: 40vh;
+    padding-left: 10px;
+  }
+
+  .hero-section .text-container {
+    left: 4%; /* Closer to the edge on very small screens */
+    width: 90%; /* More space for text */
+  }
+
+  .hero-section h1,
+  .hero-section h1 span:first-child,
+  .hero-section h1 .wind-turbine-title {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
+
+/* Adjustments for larger screens (wider than 1440px) */
+@media (min-width: 1440px) {
+  .hero-section {
+    height: 75vh; /* Reduce height to avoid looking too zoomed */
+    padding-left: 2%; /* Adjust padding */
+  }
+
+  .hero-section .text-container {
+    left: 12%; /* Standardize for large screens */
+    width: 30%; /* Less width for a more focused text area */
+  }
+
+  .hero-section h1,
+  .hero-section h1 span:first-child,
+  .hero-section h1 .wind-turbine-title {
+    font-size: 3vw; /* Scale font size with the screen size */
+    line-height: normal; /* Adjust line height as needed */
+  }
+}
