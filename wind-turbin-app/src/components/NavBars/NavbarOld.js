@@ -7,26 +7,16 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Enhanced shadow for depth
   transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); // Slightly deeper shadow on hover for dynamic effect
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 1rem;
-  }
-`;
-
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   }
 `;
 
@@ -38,7 +28,7 @@ const sharedLinkStyles = css`
 
   &:hover {
     color: #6200ea;
-    transform: scale(1.1);
+    transform: scale(1.1); // Slightly enlarge on hover for visual feedback
   }
 `;
 
@@ -50,13 +40,13 @@ const MobileIcon = styled.div`
   display: none;
 
   @media (max-width: 768px) {
-    display: block;
+    display: block; // Adjusted for clarity
     font-size: 2rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
-      transform: rotate(90deg);
+      transform: rotate(90deg); // Rotate for interactive feedback
     }
   }
 `;
@@ -75,6 +65,7 @@ const Logo = styled.img`
   }
 `;
 
+// Special styling for the "Home" link with bars above and below
 const HomeLink = styled(NavLink)`
   position: relative;
   font-weight: bold;
@@ -85,48 +76,36 @@ const HomeLink = styled(NavLink)`
     position: absolute;
     left: 0;
     right: 0;
-    height: 2px; // Adjusted for visibility
+    height: 0.55px;
     background-color: #6200ea;
   }
 
   &::before {
-    top: -10px;
+    top: -5px;
   }
 
   &::after {
-    bottom: -10px;
+    bottom: -5px;
   }
 `;
 
-function Navbar({ activeSection }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Nav>
+      {/* Reference the logo image using its path from the public directory */}
       <Logo src="/images/logo.png" alt="Logo" />
       <MobileIcon onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? "✖️" : "☰"}
       </MobileIcon>
-      <NavLinks isOpen={isOpen}>
-        <HomeLink href="#hero" isActive={activeSection === "hero"}>
-          Home
-        </HomeLink>
-        <NavLink href="#about-us" isActive={activeSection === "about-us"}>
-          About Us
-        </NavLink>
-        <NavLink
-          href="#slm-analysis"
-          isActive={activeSection === "slm-analysis"}
-        >
-          SLM Analysis
-        </NavLink>
-        <NavLink href="#simulations" isActive={activeSection === "simulations"}>
-          Simulations
-        </NavLink>
-        <NavLink href="#contact-us" isActive={activeSection === "contact-us"}>
-          Contact Us
-        </NavLink>
-      </NavLinks>
+      <NavLink isOpen={isOpen}>
+        <HomeLink href="#">Home</HomeLink>
+        <NavLink href="#">About Us</NavLink>
+        <NavLink href="#">SLM Analysis</NavLink>
+        <NavLink href="#">Simulations</NavLink>
+        <NavLink href="#">Contact Us</NavLink>
+      </NavLink>
     </Nav>
   );
 }
