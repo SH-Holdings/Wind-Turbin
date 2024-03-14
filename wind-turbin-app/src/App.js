@@ -4,8 +4,7 @@ import Hero from "./components/Hero/Hero";
 import AboutUs from "./components/Us/AboutUs";
 import RenewableEnergyIntro from "./components/Introductions/RenewableEnergyIntro";
 import SimpleLoadModel from "./components/Analysis/SimpleLoadModel";
-// import CTAButton from "./Analysis/CTAButton";
-// import ContactUs from "./Us/ContactUs";
+import ContactUs from "./components/Us/ContactUs";
 // import Footer from "./Footers/Footer";
 
 function App() {
@@ -23,7 +22,10 @@ function App() {
           id: "renewable-energy-intro",
           ref: document.getElementById("renewable-energy-intro"),
         },
-        // Add other sections here...
+        { id: "slm-analysis", ref: document.getElementById("slm-analysis") },
+        { id: "cta-button", ref: document.getElementById("cta-button") },
+        { id: "contact-us", ref: document.getElementById("contact-us") },
+        { id: "footer", ref: document.getElementById("footer") },
       ];
 
       const currentSection = sections.find((section) => {
@@ -51,8 +53,7 @@ function App() {
         <AboutUs id="about-us" />
         <RenewableEnergyIntro id="renewable-energy-intro" />
         <SimpleLoadModel id="slm-analysis" />
-
-        {/* Add other sections here... */}
+        <ContactUs id="contact-us" />
       </div>
     </>
   );

@@ -26,7 +26,7 @@ const HeroSection = styled.section`
 const Title = styled.h1`
   font-size: 3rem;
   font-weight: 300;
-  margin: 0 0 20px 0;
+  margin: 0px 150px -240px 300px;
   // push to top
   margin-top: -25%;
   color: #5392b0;
