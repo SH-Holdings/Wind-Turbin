@@ -5,7 +5,7 @@ import AboutUs from "./components/Us/AboutUs";
 import RenewableEnergyIntro from "./components/Introductions/RenewableEnergyIntro";
 import SimpleLoadModel from "./components/Analysis/SimpleLoadModel";
 import ContactUs from "./components/Us/ContactUs";
-// import Footer from "./Footers/Footer";
+import Footer from "./components/Footers/Footer";
 
 function App() {
   const [activeSection, setActiveSection] = useState("");
@@ -54,6 +54,7 @@ function App() {
         <RenewableEnergyIntro id="renewable-energy-intro" />
         <SimpleLoadModel id="slm-analysis" />
         <ContactUs id="contact-us" />
+        <Footer id="footer" />
       </div>
     </>
   );
