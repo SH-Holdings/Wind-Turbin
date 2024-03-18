@@ -5,30 +5,32 @@ const AboutSection = styled.section`
   display: flex;
   flex-direction: column; // Stack content vertically
   align-items: center; // Center content horizontally
-  padding: 50px 20px; // Adjust padding as necessary
+  padding: 30px 40px; // Increased padding for a denser look
   background-color: #f0f0f0; // Matching background color from the screenshot
   text-align: center; // Center-align text for a cohesive look
 `;
 
 const Title = styled.h2`
-  font-size: 48px;
+  font-size: 60px; // Increased font size for a bigger title
   font-weight: bold;
   color: #333; // Adjust text color to fit your design
-  margin: 0 0 10px 0; // Adjust margin to space out title from content
-`;
-
-const Content = styled.div`
-  max-width: 60%;
+  margin: 0 0 20px 0; // Increased margin to space out title from content
 `;
 
 const ReadMoreLink = styled.a`
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 30px; // Increased margin for a denser look
   color: #6200ea;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
+`;
+const Content = styled.div`
+  max-width: 60%; // Increased max-width for a denser look
+  font-size: 1.4rem; // Increased font size for a denser look
+  line-height: 1.6; // Increased line height for a denser look
+  text-align: justify; // Justify text to take more space
 `;
 
 const AboutUs = () => (
