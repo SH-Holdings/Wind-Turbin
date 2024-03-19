@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Section = styled.section`
   display: flex;
@@ -43,8 +44,10 @@ const Content = styled.div`
 `;
 
 const SimpleLoadModel = () => {
+  let navigate = useNavigate();
+
   const handleButtonClick = () => {
-    console.log("Navigate to the new page (to be implemented)");
+    navigate("/simple-load-model-input");
   };
 
   return (

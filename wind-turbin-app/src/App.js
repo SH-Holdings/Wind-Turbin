@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/NavBars/Navbar";
 import Hero from "./components/Hero/Hero";
 import AboutUs from "./components/Us/AboutUs";
 import RenewableEnergyIntro from "./components/Introductions/RenewableEnergyIntro";
 import SimpleLoadModel from "./components/Analysis/SimpleLoadModel";
+import SimpleLoadModelInput from "./components/Analysis/SimpleLoadModelInput";
 import ContactUs from "./components/Us/ContactUs";
 import Footer from "./components/Footers/Footer";
 
@@ -44,19 +46,28 @@ function App() {
   }, [activeSection]);
 
   return (
-    <>
-      <div>
-        <Navbar activeSection={activeSection} />
-      </div>
-      <div>
-        <Hero id="hero" />
-        <AboutUs id="about-us" />
-        <RenewableEnergyIntro id="renewable-energy-intro" />
-        <SimpleLoadModel id="slm-analysis" />
-        <ContactUs id="contact-us" />
-        <Footer id="footer" />
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar activeSection={activeSection} />
+              <Hero id="hero" />
+              <AboutUs id="about-us" />
+              <RenewableEnergyIntro id="renewable-energy-intro" />
+              <SimpleLoadModel id="slm-analysis" />
+              <ContactUs id="contact-us" />
+              <Footer id="footer" />
+            </>
+          }
+        />
+        <Route
+          path="/simple-load-model-input"
+          element={<SimpleLoadModelInput />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
