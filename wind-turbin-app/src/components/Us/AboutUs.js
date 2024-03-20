@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const AboutSection = styled.section`
@@ -36,19 +36,45 @@ const Content = styled.div`
   text-align: justify; // Justify text to take more space
 `;
 
-const AboutUs = () => (
-  <AboutSection id="about-us">
-    <Title>About Us</Title>
-    <Content>
-      <p>
-        We are introducing an educational and interactive web platform focusing
-        on sustainability, renewable energy, and wind turbines. You will learn
-        about renewable energy and perform analyses based on the IEC61400-2
-        standard for small wind turbines.
-      </p>
-      <ReadMoreLink href="#">READ MORE →</ReadMoreLink>
-    </Content>
-  </AboutSection>
-);
+const AboutUs = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <AboutSection id="about-us">
+      <Title>About Us</Title>
+      <Content>
+        <p>
+          We are introducing an educational and interactive web platform
+          focusing on sustainability, renewable energy, and wind turbines. You
+          will learn about renewable energy and perform analyses based on the
+          IEC61400-2 standard for small wind turbines.
+          {isExpanded && (
+            // add line break
+            <span>
+              <br />
+              <br />
+              The aim of the project is to create a Graphical User Interface
+              (GUI) for clients who would like to design a small wind turbine
+              system following the safety requirements of the international
+              standards IEC 61400-2. The interface provides an easy way to
+              analyze the structure of the turbine machine under normal and
+              extreme load conditions based on specific inputs provided. The
+              analysis of the simple load model will provide output information
+              on the fatigue loads on blades and rotor shaft, yaw error load on
+              blades, etc. for the small wind turbine performance. By adhering
+              to the structured framework of the IEC standard, "Mywindturbine"
+              intents to equip professionals, engineers, and intellectuals with
+              the knowledge and resources to actively contribute towards
+              fostering a sustainable energy landscape.
+            </span>
+          )}
+        </p>
+        <ReadMoreLink onClick={() => setIsExpanded(!isExpanded)}>
+          {isExpanded ? "READ LESS ←" : "READ MORE →"}
+        </ReadMoreLink>
+      </Content>
+    </AboutSection>
+  );
+};
 
 export default AboutUs;
