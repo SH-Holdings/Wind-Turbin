@@ -8,6 +8,9 @@ const AboutSection = styled.section`
   padding: 30px 40px; // Increased padding for a denser look
   background-color: #f0f0f0; // Matching background color from the screenshot
   text-align: center; // Center-align text for a cohesive look
+
+  padding-top: 102px; // Adjust this to the height of your navbar
+  margin-top: -102px; // Adjust this to the height of your navbar
 `;
 
 const Title = styled.h2`

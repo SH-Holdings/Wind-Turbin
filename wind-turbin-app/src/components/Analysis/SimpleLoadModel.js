@@ -11,6 +11,8 @@ const Section = styled.section`
   padding: 10px 10px 40px 50px;
   background-color: #f0f0f0; // Matching background color from the screenshot
   text-align: center; // Center-align text for a cohesive look
+  padding-top: 102px; // Adjust this to the height of your navbar
+  margin-top: -102px; // Adjust this to the height of your navbar
 `;
 
 const Title = styled.h2`

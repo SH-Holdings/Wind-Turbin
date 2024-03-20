@@ -79,6 +79,8 @@ const IntroSection = styled.section`
   padding: 10px 10px 75px 50px;
   background-color: #f0f0f0; // Light background color to differentiate the section
   text-align: center; // Center-align text for a cohesive look
+  padding-top: 102px; // Adjust this to the height of your navbar
+  margin-top: -102px; // Adjust this to the height of your navbar
 `;
 
 const SectionTitle = styled.h2`

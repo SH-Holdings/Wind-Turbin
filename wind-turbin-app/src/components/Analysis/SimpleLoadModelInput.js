@@ -149,7 +149,7 @@ const SimpleLoadModelInput = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar id="slm-analysis" />
       <Container ref={inputRef}>
         <InputGroup>
           <Label htmlFor="refWindSpeed">Reference Wind Speed</Label>

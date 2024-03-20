@@ -21,6 +21,8 @@ const HeroSection = styled.section`
   background-repeat: no-repeat;
   background-position: center right;
   color: #5392b0;
+  padding-top: 102px; // Adjust this to the height of your navbar
+  margin-top: -102px; // Adjust this to the height of your navbar
 `;
 
 const Title = styled.h1`
