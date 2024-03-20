@@ -111,7 +111,7 @@ const IconLabel = styled.div`
 
 // Assuming you have icons stored in your public directory or imported
 const Introduction = () => (
-  <IntroSection>
+  <IntroSection id="renewable-energy-intro">
     <SectionTitle>
       Introduction to <br /> Renewable Energy Systems
     </SectionTitle>{" "}

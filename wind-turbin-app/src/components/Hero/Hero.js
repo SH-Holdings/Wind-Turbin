@@ -41,7 +41,7 @@ const Subtitle = styled.span`
 
 const Hero = () => {
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <video autoPlay loop muted>
         <source src="/videos/windturbine.mp4" type="video/mp4" />
       </video>

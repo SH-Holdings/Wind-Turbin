@@ -34,7 +34,7 @@ const Content = styled.div`
 `;
 
 const AboutUs = () => (
-  <AboutSection>
+  <AboutSection id="about-us">
     <Title>About Us</Title>
     <Content>
       <p>

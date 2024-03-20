@@ -51,7 +51,7 @@ const SimpleLoadModel = () => {
   };
 
   return (
-    <Section>
+    <Section id="slm-analysis">
       <Title>Simple Load Model</Title>
       <Content>
         <p>

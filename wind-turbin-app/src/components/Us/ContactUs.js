@@ -191,7 +191,7 @@ const RequiredAsterisk = styled.span`
 
 const ContactUs = () => {
   return (
-    <ContactSection>
+    <ContactSection id="contact-us">
       <TitleContainer>
         <ContactTitle>Contact Us</ContactTitle>
       </TitleContainer>

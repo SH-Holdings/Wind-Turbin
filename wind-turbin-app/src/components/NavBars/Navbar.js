@@ -121,14 +121,17 @@ function Navbar({ activeSection }) {
           About Us
         </NavLink>
         <NavLink
+          href="#renewable-energy-intro"
+          isActive={activeSection === "renewable-energy-intro"}
+        >
+          Introduction to Renewable Energy
+        </NavLink>
+        <NavLink
           href="#slm-analysis"
           isActive={activeSection === "slm-analysis"}
         >
           SLM Analysis
         </NavLink>
-        {/* <NavLink href="#simulations" isActive={activeSection === "simulations"}>
-          Simulations
-        </NavLink> */}
         <NavLink href="#contact-us" isActive={activeSection === "contact-us"}>
           Contact Us
         </NavLink>
