@@ -114,25 +114,25 @@ function Navbar({ activeSection }) {
         {isOpen ? "✖️" : "☰"}
       </MobileIcon>
       <NavLinks isOpen={isOpen}>
-        <NavLink href="#hero" isActive={activeSection === "hero"}>
+        <NavLink href="/#hero" isActive={activeSection === "hero"}>
           Home
         </NavLink>
-        <NavLink href="#about-us" isActive={activeSection === "about-us"}>
+        <NavLink href="/#about-us" isActive={activeSection === "about-us"}>
           About Us
         </NavLink>
         <NavLink
-          href="#renewable-energy-intro"
+          href="/#renewable-energy-intro"
           isActive={activeSection === "renewable-energy-intro"}
         >
           Introduction to Renewable Energy
         </NavLink>
         <NavLink
-          href="#slm-analysis"
+          href="/#slm-analysis"
           isActive={activeSection === "slm-analysis"}
         >
           SLM Analysis
         </NavLink>
-        <NavLink href="#contact-us" isActive={activeSection === "contact-us"}>
+        <NavLink href="/#contact-us" isActive={activeSection === "contact-us"}>
           Contact Us
         </NavLink>
       </NavLinks>
