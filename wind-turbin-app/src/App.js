@@ -25,7 +25,6 @@ function App() {
           ref: document.getElementById("renewable-energy-intro"),
         },
         { id: "slm-analysis", ref: document.getElementById("slm-analysis") },
-        { id: "cta-button", ref: document.getElementById("cta-button") },
         { id: "contact-us", ref: document.getElementById("contact-us") },
         { id: "footer", ref: document.getElementById("footer") },
       ];

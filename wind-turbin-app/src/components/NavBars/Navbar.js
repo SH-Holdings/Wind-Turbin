@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 const Nav = styled.nav`
+  position: sticky; //
+  top: 0; //
+  z-index: 100; //  to ensure navbar is above other elements
+  background-color: #fff; // Add a background color to make the navbar visible
   background-color: #fff;
   padding: 1rem 2rem;
   display: flex;
@@ -44,6 +48,31 @@ const sharedLinkStyles = css`
 
 const NavLink = styled.a`
   ${sharedLinkStyles}
+
+  ${({ isActive }) =>
+    isActive &&
+    css`
+      position: relative;
+      font-weight: bold;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px; // Adjusted for visibility
+        background-color: #6200ea;
+      }
+
+      &::before {
+        top: -10px;
+      }
+
+      &::after {
+        bottom: -10px;
+      }
+    `}
 `;
 
 const MobileIcon = styled.div`
@@ -75,29 +104,6 @@ const Logo = styled.img`
   }
 `;
 
-const HomeLink = styled(NavLink)`
-  position: relative;
-  font-weight: bold;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px; // Adjusted for visibility
-    background-color: #6200ea;
-  }
-
-  &::before {
-    top: -10px;
-  }
-
-  &::after {
-    bottom: -10px;
-  }
-`;
-
 function Navbar({ activeSection }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -108,9 +114,9 @@ function Navbar({ activeSection }) {
         {isOpen ? "✖️" : "☰"}
       </MobileIcon>
       <NavLinks isOpen={isOpen}>
-        <HomeLink href="#hero" isActive={activeSection === "hero"}>
+        <NavLink href="#hero" isActive={activeSection === "hero"}>
           Home
-        </HomeLink>
+        </NavLink>
         <NavLink href="#about-us" isActive={activeSection === "about-us"}>
           About Us
         </NavLink>
@@ -120,9 +126,9 @@ function Navbar({ activeSection }) {
         >
           SLM Analysis
         </NavLink>
-        <NavLink href="#simulations" isActive={activeSection === "simulations"}>
+        {/* <NavLink href="#simulations" isActive={activeSection === "simulations"}>
           Simulations
-        </NavLink>
+        </NavLink> */}
         <NavLink href="#contact-us" isActive={activeSection === "contact-us"}>
           Contact Us
         </NavLink>
