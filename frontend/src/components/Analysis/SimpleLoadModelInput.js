@@ -133,18 +133,51 @@ const SimpleLoadModelInput = () => {
     />
   );
 
-  const generatePDF = () => {
+  const generatePDF = async () => {
     const inputs = Array.from(inputRef.current.getElementsByTagName("input"));
-    const labels = Array.from(inputRef.current.getElementsByTagName("label"));
 
-    const pdf = new jsPDF();
-    inputs.forEach((input, index) => {
-      const label = labels.find((label) => label.htmlFor === input.id);
-      const text = `${label.textContent}: ${input.value}`;
-      pdf.text(text, 10, 10 + index * 10);
+    // Step 1: Collect Form Data
+    const formData = {};
+    inputs.forEach((input) => {
+      formData[input.id] = input.value;
     });
 
-    pdf.save("report.pdf");
+    try {
+      // Step 2: Send Data to API
+      const response = await fetch(
+        "http://localhost:8000/api/calculate_loads/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`API call failed: ${response.statusText}`);
+      }
+
+      const data = await response.json(); // Step 3: API processes data
+
+      // Step 4: Use API Response in PDF
+      const pdf = new jsPDF();
+      inputs.forEach((input, index) => {
+        const text = `${input.id}: ${input.value}`;
+        pdf.text(text, 10, 10 + index * 10);
+      });
+
+      // Example: Add API response data to the PDF
+      // Adjust this part based on your actual API response structure
+      const apiResponseText = `API Result: ${JSON.stringify(data)}`;
+      pdf.text(apiResponseText, 10, 10 + inputs.length * 10);
+
+      pdf.save("report.pdf");
+    } catch (error) {
+      console.error("Error during API call:", error);
+      // Handle error appropriately (e.g., show an error message to the user)
+    }
   };
 
   return (

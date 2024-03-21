@@ -29,9 +29,9 @@ def calculate_loads(request):
         B25 = float(data["gearboxRatio"])
         B26 = data["brakeStatus"]
         B27 = float(data["brakeTorque"])
-        B28 = float(data["DesignPower"])
-        B29 = float(data["ShortCircuitTorqueFactor"])
-        B30 = data["StationaryBlades"]
+        B28 = float(data["designPower"])
+        B29 = float(data["shortCircuit"])
+        B30 = data["stationaryBlades"]
 
         B19 = 30.3 * B22**2
 
@@ -321,6 +321,7 @@ def calculate_loads(request):
             return results
 
         results = analyze_load_cases()
+        print(results)
         return JsonResponse(results)
 
     return JsonResponse({"error": "This endpoint requires a POST request."}, status=400)
