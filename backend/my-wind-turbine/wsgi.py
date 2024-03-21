@@ -1,5 +1,5 @@
 """
-WSGI config for WindTurbineAnalysis project.
+WSGI config for my-wind-turbine project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "WindTurbineAnalysis.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my-wind-turbine.settings")
 
 application = get_wsgi_application()
