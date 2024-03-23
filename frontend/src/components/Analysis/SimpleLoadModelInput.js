@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { FaQuestionCircle } from "react-icons/fa";
 import jsPDF from "jspdf";
 import Navbar from "../NavBars/Navbar";
 import Footer from "../Footers/Footer";
+
+const Title = styled.h1`
+  color: #333;
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+`;
 
 const Container = styled.div`
   display: grid;
@@ -13,7 +26,7 @@ const Container = styled.div`
   background: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 960px; // Adjust the max-width as needed
+  max-width: 960px;
   margin: 32px auto;
 `;
 
@@ -23,6 +36,7 @@ const InputGroup = styled.div`
   flex-direction: column;
   gap: 12px;
 `;
+
 const Label = styled.label`
   font-size: 1rem;
   color: #333;
@@ -39,10 +53,10 @@ const Input = styled.input`
   border: 2px solid #e6e6e6;
   border-radius: 8px;
   padding: 12px 16px;
-  padding-right: 30px; // Add padding to prevent text from overlapping with the icon
+  padding-right: 30px;
   font-size: 0.9rem;
   transition: border-color 0.3s, box-shadow 0.3s;
-  flex-grow: 1; // Make the input field take up the remaining space
+  flex-grow: 1;
 
   &:hover {
     border-color: #c0c0c0;
@@ -72,9 +86,9 @@ const TooltipText = styled.span`
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%; // Position the tooltip above the icon
+  bottom: 125%;
   left: 50%;
-  margin-left: -125px; // Shift the tooltip to the left by half its width to center it
+  margin-left: -125px;
   opacity: 0;
   transition: opacity 0.3s;
   font-size: 0.75rem;
@@ -82,9 +96,9 @@ const TooltipText = styled.span`
   &::after {
     content: "";
     position: absolute;
-    top: 100%; // Arrow is just below the tooltip box
-    left: 50%; // Center arrow horizontally in the tooltip
-    margin-left: -5px; // Shift arrow to the left by half its width
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
@@ -102,8 +116,8 @@ const Tooltip = styled.div`
 `;
 
 const GenerateButton = styled.button`
-  grid-column: span 3; // Span the button across all 3 columns
-  justify-self: end; // Align the button to the right
+  grid-column: span 3;
+  justify-self: end;
   background-color: #6200ea;
   color: white;
   padding: 8px 16px;
@@ -112,7 +126,7 @@ const GenerateButton = styled.button`
   cursor: pointer;
   font-size: 0.8rem;
   transition: background-color 0.3s;
-  margin-top: 1px; // Add some space between the inputs and the button
+  margin-top: 1px;
 
   &:hover {
     background-color: #3700b3;
@@ -121,6 +135,10 @@ const GenerateButton = styled.button`
 
 const SimpleLoadModelInput = () => {
   const inputRef = React.useRef();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const NumberInput = (props) => (
     <Input
@@ -136,14 +154,14 @@ const SimpleLoadModelInput = () => {
   const generatePDF = async () => {
     const inputs = Array.from(inputRef.current.getElementsByTagName("input"));
 
-    // Step 1: Collect Form Data
+    // Collect Form Data
     const formData = {};
     inputs.forEach((input) => {
       formData[input.id] = input.value;
     });
 
     try {
-      // Step 2: Send Data to API
+      // Send Data to API
       const response = await fetch(
         "http://localhost:8000/api/calculate_loads/",
         {
@@ -159,30 +177,28 @@ const SimpleLoadModelInput = () => {
         throw new Error(`API call failed: ${response.statusText}`);
       }
 
-      const data = await response.json(); // Step 3: API processes data
+      const data = await response.json(); // API processes data
 
-      // Step 4: Use API Response in PDF
+      // Use API Response in PDF
       const pdf = new jsPDF();
       inputs.forEach((input, index) => {
         const text = `${input.id}: ${input.value}`;
         pdf.text(text, 10, 10 + index * 10);
       });
 
-      // Example: Add API response data to the PDF
-      // Adjust this part based on your actual API response structure
       const apiResponseText = `API Result: ${JSON.stringify(data)}`;
       pdf.text(apiResponseText, 10, 10 + inputs.length * 10);
 
       pdf.save("report.pdf");
     } catch (error) {
       console.error("Error during API call:", error);
-      // Handle error appropriately (e.g., show an error message to the user)
     }
   };
 
   return (
     <>
       <Navbar />
+      <Title>Simple Load Model Input</Title>
       <Container ref={inputRef}>
         <InputGroup>
           <Label htmlFor="refWindSpeed">Reference Wind Speed</Label>
