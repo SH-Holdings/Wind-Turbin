@@ -5,17 +5,47 @@ import jsPDF from "jspdf";
 import Navbar from "../NavBars/Navbar";
 import Footer from "../Footers/Footer";
 
+// const Title = styled.h1`
+//   color: #333;
+//   font-size: 3.5em;
+//   text-align: center;
+//   margin-bottom: 20px;
+//   letter-spacing: 1px;
+//   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+//   margin-top: 0;
+//   padding-top: 20px;
+//   padding-bottom: 10px;
+//   margin-bottom: 40px;
+// `;
+
 const Title = styled.h1`
   color: #333;
-  font-size: 3em;
+  font-size: 3.5em;
   text-align: center;
   margin-bottom: 20px;
-  letter-spacing: 1px;
+  letter-spacing: 2px; /* Slightly more spaced out for elegance */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 0;
   padding-top: 20px;
   padding-bottom: 10px;
   margin-bottom: 40px;
+
+  /* Gradient text effect */
+  background: -webkit-linear-gradient(45deg, #6200ea, #ff0078);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Subtle scale animation to draw attention */
+  animation: scaleUp 1.5s infinite alternate;
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05);
+    }
+  }
 `;
 
 const Container = styled.div`
@@ -26,7 +56,7 @@ const Container = styled.div`
   background: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 960px;
+  max-width: 900px;
   margin: 32px auto;
 `;
 
@@ -133,6 +163,16 @@ const GenerateButton = styled.button`
   }
 `;
 
+const VideoBackground = styled.video`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+`;
+
 const SimpleLoadModelInput = () => {
   const inputRef = React.useRef();
 
@@ -198,7 +238,11 @@ const SimpleLoadModelInput = () => {
   return (
     <>
       <Navbar />
-      <Title>Simple Load Model Input</Title>
+      <VideoBackground autoPlay loop muted>
+        <source src="/videos/windturbine.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </VideoBackground>{" "}
+      <Title>Simple Load Model</Title>
       <Container ref={inputRef}>
         <InputGroup>
           <Label htmlFor="refWindSpeed">Reference Wind Speed</Label>
