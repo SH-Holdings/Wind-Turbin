@@ -14,6 +14,13 @@ const FooterContainer = styled.footer`
   padding: 1rem 2rem; // Adjusted padding for a tighter footer
   background-color: #333;
   color: #fff;
+
+  @media (max-width: 768px) {
+    // or 480px, depending on your needs
+    flex-direction: column;
+    align-items: center; // This centers the footer items on smaller screens
+    padding: 1rem; // Adjust padding for mobile view
+  }
 `;
 
 const FooterTitle = styled.h4`
@@ -54,17 +61,30 @@ const LogoImage = styled.img`
 const CopyRightText = styled.p`
   font-size: 0.75rem; // Slightly larger font for readability
   margin-top: 1rem; // Space between sections and copyright text
+
+  @media (max-width: 480px) {
+    font-size: 0.65rem; // Example: Smaller font size for the copyright text
+  }
 `;
 const FooterSection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; // Centers the items
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem; // Add some space between the sections for readability
+  }
 `;
 
 const SocialMediaContainer = styled.div`
   display: flex;
-  justify-content: center; // Centers the icons horizontally
+  justify-content: center;
   padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-around; // This will space out the icons evenly
+  }
 `;
 
 const Footer = () => {
