@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 const Nav = styled.nav`
-  position: sticky; //
-  top: 0; //
-  z-index: 100; //  to ensure navbar is above other elements
-  background-color: #fff; // Add a background color to make the navbar visible
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
   background-color: #fff;
   padding: 1rem 2rem;
   display: flex;
@@ -18,7 +18,7 @@ const Nav = styled.nav`
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     flex-direction: column;
     padding: 1rem;
   }
@@ -28,7 +28,7 @@ const NavLinks = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     flex-direction: column;
     display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
   }
@@ -72,13 +72,23 @@ const NavLink = styled.a`
       &::after {
         bottom: -10px;
       }
+
+      @media (max-width: 480px) {
+        &::before {
+          top: -4px;
+        }
+
+        &::after {
+          bottom: -4px;
+        }
+      }
     `}
 `;
 
 const MobileIcon = styled.div`
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     display: block;
     font-size: 2rem;
     cursor: pointer;
@@ -99,7 +109,7 @@ const Logo = styled.img`
     transform: scale(1.3);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     margin-bottom: 1rem;
   }
 `;

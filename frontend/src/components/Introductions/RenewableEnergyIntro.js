@@ -1,124 +1,71 @@
-// import React from "react";
-// import styled from "styled-components";
-
-// const IntroSection = styled.section`
-//   padding: 1px;
-//   background-color: #f0f0f0; // Light background color to differentiate the section
-//   text-align: center; // Center-align text for a cohesive look
-// `;
-
-// const SectionTitle = styled.h2`
-//   margin-bottom: 20px; // Adds spacing between the title and the icons
-//   font-size: 60px; // Increased font size for a bigger title
-//   font-weight: bold;
-//   color: #333;
-//   margin: 0 0 20px 0;
-// `;
-
-// const IconsGrid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(
-//     auto-fit,
-//     minmax(100px, 1fr)
-//   ); // Creates a responsive grid
-//   gap: 20px; // Spacing between grid items
-//   align-items: center;
-//   justify-items: center;
-// `;
-
-// const Icon = styled.img`
-//   width: 80px; // Icon size
-//   height: 80px; // Maintains aspect ratio
-// `;
-
-// const IconLabel = styled.div`
-//   text-align: center;
-//   margin-top: 10px; // Spacing between the icon and its label
-// `;
-
-// // Assuming you have icons stored in your public directory or imported
-// const Introduction = () => (
-//   <IntroSection>
-//     <SectionTitle>Introduction to Renewable Energy Systems</SectionTitle>
-//     <IconsGrid>
-//       {/* Repeat for each energy type */}
-//       <div>
-//         <Icon src="/images/wind-icon.png" alt="Wind" />
-//         <IconLabel>Wind</IconLabel>
-//       </div>
-//       <div>
-//         <Icon src="/images/solar-icon.png" alt="Solar" />
-//         <IconLabel>Solar</IconLabel>
-//       </div>
-//       <div>
-//         <Icon src="/images/biomass-icon.png" alt="Biomass" />
-//         <IconLabel>Biomass</IconLabel>
-//       </div>
-//       <div>
-//         <Icon src="/images/geothermal-icon.png" alt="Geothermal" />
-//         <IconLabel>Geothermal</IconLabel>
-//       </div>
-//       <div>
-//         <Icon src="/images/ocean-icon.png" alt="Ocean" />
-//         <IconLabel>Ocean</IconLabel>
-//       </div>
-//       <div>
-//         <Icon src="/images/hydropower-icon.png" alt="Hydropower" />
-//         <IconLabel>Hydropower</IconLabel>
-//       </div>
-//     </IconsGrid>
-//   </IntroSection>
-// );
-
-// export default Introduction;
-
 import React from "react";
 import styled from "styled-components";
 
 const IntroSection = styled.section`
   padding: 10px 10px 75px 50px;
-  background-color: #f0f0f0; // Light background color to differentiate the section
-  text-align: center; // Center-align text for a cohesive look
-  padding-top: 102px; // Adjust this to the height of your navbar
-  margin-top: -102px; // Adjust this to the height of your navbar
+  background-color: #f0f0f0;
+  text-align: center;
+  padding-top: 102px;
+  margin-top: -102px;
+
+  @media (max-width: 480px) {
+    padding: 50px 20px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  margin-bottom: 70px; // Increased margin for more space between the title and the icons
-  font-size: 60px; // Increased font size for a bigger title
+  margin-bottom: 70px;
+  font-size: 60px;
   font-weight: bold;
   color: #333;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
 `;
 
 const IconsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(100px, 1fr)
-  ); // Creates a responsive grid
-  gap: 40px; // Increased gap for more space between grid items
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 40px;
   align-items: center;
   justify-items: center;
+
+  @media (max-width: 480px) {
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Icon = styled.img`
-  width: 80px; // Icon size
-  height: 80px; // Maintains aspect ratio
+  width: 80px;
+  height: 80px;
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 const IconLabel = styled.div`
   text-align: center;
-  margin-top: 20px; // Increased margin for more space between the icon and its label
+  margin-top: 20px;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-top: 10px;
+  }
 `;
 
-// Assuming you have icons stored in your public directory or imported
 const Introduction = () => (
   <IntroSection id="renewable-energy-intro">
     <SectionTitle>
       Introduction to <br /> Renewable Energy Systems
     </SectionTitle>{" "}
     <IconsGrid>
-      {/* Repeat for each energy type */}
       <div>
         <Icon src="/images/wind-icon.png" alt="Wind" />
         <IconLabel>Wind</IconLabel>

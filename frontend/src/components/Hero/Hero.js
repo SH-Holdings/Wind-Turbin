@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// Assuming HeroSection is your component where the background image is set
 const HeroSection = styled.section`
   video {
     object-fit: cover;
@@ -13,16 +12,22 @@ const HeroSection = styled.section`
 
   display: flex;
   flex-direction: column;
-  justify-content: center; // Vertically centers content in the container
-  align-items: flex-start; // Aligns items to the start (left) of the container
+  justify-content: center;
+  align-items: flex-start;
   height: 685px;
   // background-image: url("/images/mywindturbinehero.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
   color: #5392b0;
-  padding-top: 102px; // Adjust this to the height of your navbar
-  margin-top: -102px; // Adjust this to the height of your navbar
+  padding-top: 102px;
+  margin-top: -102px;
+
+  @media (max-width: 480px) {
+    align-items: center;
+    padding: var(--navbar-height, 60px) 20px var(--footer-height, 50px); // Adjust padding
+    background-position: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -32,13 +37,24 @@ const Title = styled.h1`
   // push to top
   margin-top: -25%;
   color: #5392b0;
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    margin: 0 20px;
+    text-align: center;
+  }
 `;
 
 const Subtitle = styled.span`
-  font-size: 3rem; // Adjust size as needed
+  font-size: 3rem;
   font-weight: 700;
   display: block;
   color: #333333;
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    text-align: center;
+  }
 `;
 
 const Hero = () => {

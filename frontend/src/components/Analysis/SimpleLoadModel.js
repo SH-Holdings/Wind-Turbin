@@ -6,43 +6,66 @@ import { useNavigate } from "react-router-dom";
 
 const Section = styled.section`
   display: flex;
-  flex-direction: column; // Stack content vertically
-  align-items: center; // Center content horizontally
+  flex-direction: column;
+  align-items: center;
   padding: 10px 10px 40px 50px;
-  background-color: #f0f0f0; // Matching background color from the screenshot
-  text-align: center; // Center-align text for a cohesive look
-  padding-top: 102px; // Adjust this to the height of your navbar
-  margin-top: -102px; // Adjust this to the height of your navbar
+  background-color: #f0f0f0;
+  text-align: center;
+  padding-top: 102px;
+  margin-top: -102px;
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    padding-top: 50px;
+    margin-top: -50px;
+  }
 `;
 
 const Title = styled.h2`
-  font-size: 60px; // Increased font size for a bigger title
+  font-size: 60px;
   font-weight: bold;
-  color: #333; // Adjust text color to fit your design
-  margin: 0 0 20px 0; // Increased margin to space out title from content
+  color: #333;
+  margin: 0 0 20px 0;
+
+  @media (max-width: 480px) {
+    font-size: 24px; // Further reduced font size for smaller devices
+  }
 `;
 
 const LaunchButton = styled.button`
   cursor: pointer;
-  background-color: #6200ea; // Original purple color
+  background-color: #6200ea;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  display: inline-flex; // Use inline-flex to center button icon and text inline
+  display: inline-flex;
   align-items: center;
-  gap: 10px; // Space between icon and text
-  margin-top: 30px; // Increased margin for a denser look
+  gap: 10px;
+  margin-top: 30px;
   &:hover {
-    background-color: #7b2ff7; // Darken on hover
+    background-color: #7b2ff7;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 16px;
+    margin-top: 20px;
+    gap: 5px;
   }
 `;
 
 const Content = styled.div`
-  max-width: 60%; // Increased max-width for a denser look
-  font-size: 1.4rem; // Increased font size for a denser look
-  line-height: 1.6; // Increased line height for a denser look
-  text-align: justify; // Justify text to take more space
+  max-width: 60%;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: justify;
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+    font-size: 1rem;
+    text-align: left;
+    text-align: justify;
+  }
 `;
 
 const SimpleLoadModel = () => {
