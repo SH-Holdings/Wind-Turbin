@@ -47,7 +47,7 @@ const Container = styled.div`
   background: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
+  max-width: 960px;
   margin: 32px auto;
 
   @media (min-width: 480px) {
@@ -228,9 +228,18 @@ const SimpleLoadModelInput = () => {
       {...props}
     />
   );
-
   const generatePDF = async () => {
     const inputs = Array.from(inputRef.current.getElementsByTagName("input"));
+
+    // Function to check and add a new page if needed
+    const checkAndAddPageIfNeeded = (currentY, pdf) => {
+      const pageHeight = pdf.internal.pageSize.height;
+      if (currentY > pageHeight - 10) {
+        pdf.addPage();
+        return 10; // Reset Y to the top of the new page
+      }
+      return currentY;
+    };
 
     // Collect Form Data
     const formData = {};
@@ -257,17 +266,117 @@ const SimpleLoadModelInput = () => {
 
       const data = await response.json(); // API processes data
 
-      // Use API Response in PDF
+      // Initialize PDF
       const pdf = new jsPDF();
-      inputs.forEach((input, index) => {
-        const text = `${input.id}: ${input.value}`;
-        pdf.text(text, 10, 10 + index * 10);
+      let currentY = 10;
+
+      // Report Title: bold and center
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(18);
+      pdf.text("Engineering Analysis Report", 105, currentY, {
+        align: "center",
+      });
+      currentY += 10;
+
+      // Generated Date: italic
+      pdf.setFont("helvetica", "italic");
+      pdf.setFontSize(10);
+      pdf.text(
+        `Generated on: ${new Date().toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        })}`,
+        105,
+        currentY,
+        { align: "center" }
+      );
+      currentY += 10; // Less space before the next section
+
+      // User Inputs Section: bold and underline
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(14); // Same font size for both titles
+      currentY = checkAndAddPageIfNeeded(currentY, pdf);
+      pdf.text("User Inputs", 10, currentY);
+      pdf.line(
+        10,
+        currentY + 1,
+        10 +
+          (pdf.getStringUnitWidth("User Inputs") * pdf.internal.getFontSize()) /
+            pdf.internal.scaleFactor,
+        currentY + 1
+      ); // Match underline with title length
+      currentY += 10;
+
+      // User Inputs: bold labels, normal values with reduced space
+      pdf.setFontSize(10);
+      inputs.forEach((input) => {
+        currentY = checkAndAddPageIfNeeded(currentY, pdf);
+        const labelText = `${input.id}: `;
+        pdf.setFont("helvetica", "bold"); // Label in bold
+        pdf.text(labelText, 10, currentY); // Position label
+
+        // Calculate width of the label text to adjust the starting position of the value
+        const labelWidth =
+          (pdf.getStringUnitWidth(labelText) * pdf.internal.getFontSize()) /
+          pdf.internal.scaleFactor;
+        pdf.setFont("helvetica", "normal"); // Switch to normal font for value
+
+        // Position value closer to label
+        pdf.text(input.value, 10 + labelWidth + 5, currentY); // Increased space after ":"
+
+        currentY += 10; // Increment Y position for the next input
       });
 
-      const apiResponseText = `API Result: ${JSON.stringify(data)}`;
-      pdf.text(apiResponseText, 10, 10 + inputs.length * 10);
+      // Analysis Results Section: bold and underline, same styling as User Inputs
+      pdf.setFont("helvetica", "bold");
+      pdf.setFontSize(14); // Same font size for both titles
+      currentY = checkAndAddPageIfNeeded(currentY, pdf);
+      pdf.text("Analysis Results", 10, currentY);
+      pdf.line(
+        10,
+        currentY + 1,
+        10 +
+          (pdf.getStringUnitWidth("Analysis Results") *
+            pdf.internal.getFontSize()) /
+            pdf.internal.scaleFactor,
+        currentY + 1
+      ); // Match underline with title length
+      currentY += 10;
 
-      pdf.save("report.pdf");
+      // Analysis Results: bold load cases, color-coded
+      pdf.setFontSize(10);
+      Object.entries(data).forEach(([caseName, caseResults]) => {
+        currentY = checkAndAddPageIfNeeded(currentY, pdf);
+        pdf.setFont("helvetica", "bold"); // Bold for case name
+        pdf.text(caseName + ":", 10, currentY);
+        currentY += 10;
+
+        Object.entries(caseResults).forEach(([component, result]) => {
+          currentY = checkAndAddPageIfNeeded(currentY, pdf);
+          pdf.setFont("helvetica", "bold"); // Bold for component
+          pdf.setTextColor("#808080"); // Dark grey for component
+          pdf.text(`${component}: `, 10, currentY);
+
+          // Color only the result text
+          pdf.setFont("helvetica", "normal"); // Normal for the result
+          pdf.setTextColor(result === "SAFE" ? "green" : "red");
+          // Adjust the position for result, accounting for the additional space after ":"
+          const resultPosition =
+            10 +
+            (pdf.getStringUnitWidth(`${component}: `) *
+              pdf.internal.getFontSize()) /
+              pdf.internal.scaleFactor +
+            3; // Slight space after ":"
+          pdf.text(result, resultPosition, currentY);
+
+          currentY += 10;
+        });
+        pdf.setTextColor(0); // Reset text color to black for next texts
+      });
+
+      // Save the PDF
+      pdf.save("detailed_report.pdf");
     } catch (error) {
       console.error("Error during API call:", error);
     }
