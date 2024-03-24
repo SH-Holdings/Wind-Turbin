@@ -15,9 +15,10 @@ const Section = styled.section`
   margin-top: -102px;
 
   @media (max-width: 480px) {
-    padding: 10px;
-    padding-top: 50px;
-    margin-top: -50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 335px;
+    margin-top: -335px;
   }
 `;
 

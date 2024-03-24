@@ -12,7 +12,8 @@ const AboutSection = styled.section`
   margin-top: -102px;
 
   @media (max-width: 480px) {
-    padding: var(--navbar-height, 50px) 20px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `;
 
@@ -24,7 +25,7 @@ const Title = styled.h2`
 
   @media (max-width: 408px) {
     font-size: 2.5rem; 
-    padding: 0 10px; 
+    padding: 0px 0px; 
   }s
 `;
 

@@ -25,7 +25,6 @@ const HeroSection = styled.section`
 
   @media (max-width: 480px) {
     align-items: center;
-    padding: var(--navbar-height, 60px) 20px var(--footer-height, 50px); // Adjust padding
     background-position: center;
   }
 `;

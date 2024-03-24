@@ -9,9 +9,10 @@ const IntroSection = styled.section`
   margin-top: -102px;
 
   @media (max-width: 480px) {
-    padding: 50px 20px;
-    padding-top: 60px;
-    padding-bottom: 30px;
+    padding-top: 335px;
+    margin-top: -335px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `;
 

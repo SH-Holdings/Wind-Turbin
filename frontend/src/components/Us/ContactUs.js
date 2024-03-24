@@ -11,9 +11,8 @@ const ContactSection = styled.section`
   margin-top: -102px;
 
   @media (max-width: 480px) {
-    padding: 20px;
-    padding-top: 60px;
-    margin-top: -60px;
+    padding-top: 335px;
+    margin-top: -335px;
   }
 `;
 

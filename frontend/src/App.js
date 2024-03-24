@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       // Threshold for activating section, you can adjust it
-      const sectionThreshold = 150;
+      const sectionThreshold = 50;
       // Sections with their IDs
       const sections = [
         { id: "hero", ref: document.getElementById("hero") },
