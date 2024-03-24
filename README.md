@@ -19,7 +19,6 @@
 ## Backend
 
 - Run `cd backend`
-- Run `npm install` to install dependencies
 - Run `python manage.py migrate` to apply migrations
 - Run `python manage.py runserver` to start the project
 - Open [http://localhost:8000](http://localhost:8000) to view it in the browser.

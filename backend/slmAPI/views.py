@@ -2,11 +2,13 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import math
+import time
 
 
 @csrf_exempt
 def calculate_loads(request):
     if request.method == "POST":
+        start_time = time.time()
         data = json.loads(request.body)
         print(data)
         B7 = float(data["airDensity"])
@@ -322,6 +324,7 @@ def calculate_loads(request):
 
         results = analyze_load_cases()
         print(results)
+        print(f"Time taken for analysis : {time.time() - start_time} seconds")
         return JsonResponse(results)
 
     return JsonResponse({"error": "This endpoint requires a POST request."}, status=400)
