@@ -487,7 +487,7 @@ const SimpleLoadModelInput = () => {
           </InputGroup>
           <InputGroup>
             <Label htmlFor="maxLiftCoeff">
-              Maximum Lift Coefficient of the Blades
+              Max Lift Coefficient of the Blades
             </Label>
             <InputContainer>
               <NumberInput id="maxLiftCoeff" placeholder="Unitless" />
@@ -754,6 +754,90 @@ const SimpleLoadModelInput = () => {
                 <TooltipText>
                   The distance between the combined center of gravity of the
                   rotor assembly to the rotor axis.
+                </TooltipText>
+              </Tooltip>
+            </InputContainer>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="ultimateBladeStrength">
+              Ultimate Material Strength of blade
+            </Label>
+            <InputContainer>
+              <NumberInput
+                id="ultimateBladeStrength"
+                placeholder="Measured in MPA"
+              />
+              <Tooltip>
+                <Icon />
+                <TooltipText>Ultimate Material Strength of blade.</TooltipText>
+              </Tooltip>
+            </InputContainer>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="ultimateShaftStrength">
+              Ultimate Material Strength of Shaft
+            </Label>
+            <InputContainer>
+              <NumberInput
+                id="ultimateShaftStrength"
+                placeholder="Measured in MPA"
+              />
+              <Tooltip>
+                <Icon />
+                <TooltipText>Ultimate Material Strength of Shaft.</TooltipText>
+              </Tooltip>
+            </InputContainer>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="LoadCasePartialSafetyFactor">
+              Load Case Partial Safety Factor
+            </Label>
+            <InputContainer>
+              <NumberInput
+                id="LoadCasePartialSafetyFactor"
+                placeholder="Unitless"
+              />
+              <Tooltip>
+                <Icon />
+                <TooltipText>Load Case Partial Safety Factor.</TooltipText>
+              </Tooltip>
+            </InputContainer>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="BladeRelevantPartialSafetyFactor">
+              Blade Relevant Partial Safety Factor for the Material
+            </Label>
+            <InputContainer>
+              <NumberInput
+                id="BladeRelevantPartialSafetyFactor"
+                placeholder="Unitless"
+              />
+              <Tooltip>
+                <Icon />
+                <TooltipText>
+                  Blade Relevant Partial Safety Factor for the Material
+                </TooltipText>
+              </Tooltip>
+            </InputContainer>
+          </InputGroup>
+
+          <InputGroup>
+            <Label htmlFor="ShaftRelevantPartialSafetyFactor">
+              Shaft Relevant Partial Safety Factor for the Material
+            </Label>
+            <InputContainer>
+              <NumberInput
+                id="ShaftRelevantPartialSafetyFactor"
+                placeholder="Unitless"
+              />
+              <Tooltip>
+                <Icon />
+                <TooltipText>
+                  Shaft relevant partial safety factor for the material.
                 </TooltipText>
               </Tooltip>
             </InputContainer>
