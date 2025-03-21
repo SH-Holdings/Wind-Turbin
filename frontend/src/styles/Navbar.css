@@ -1,0 +1,54 @@
+.navbar {
+  width: 1440px;
+  height: 102px;
+  position: flex;
+  z-index: 10;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly; /* This spreads the nav-items evenly across the navbar */
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #333333; /* Dark gray color for text */
+  font-family: "Roboto", sans-serif;
+  font-size: 15px; /* Adjust font size as needed */
+}
+
+@media (max-width: 1440px) {
+  .navbar {
+    width: 100%;
+    margin-left: 0; /* Ensures navbar aligns with the viewport edge */
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-item a {
+    font-size: 14px; /* Smaller font size for tablet and below */
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center; /* Stack the nav items vertically and center them */
+  }
+
+  .nav-item {
+    margin: 10px 0; /* Adds some space between stacked nav items */
+  }
+
+  .nav-item a {
+    font-size: 12px; /* Even smaller font size for mobile */
+  }
+}
