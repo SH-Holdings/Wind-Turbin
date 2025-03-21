@@ -4,10 +4,9 @@
 - `dev-souf` is a branch for @Sotounsi commits.
 - `development` is the main branch of development which requires PRs.
 
-# How to run the project (dev-souf)
+# How to run the project
 
 - Clone the project
-- Run `git checkout dev-souf` to switch to the development branch
 
 ## Frontend
 
